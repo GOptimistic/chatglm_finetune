@@ -54,6 +54,7 @@ def write_to_txt(str_list, txt_path):
 def main(
         model_dir: Annotated[str, typer.Argument(help='')],
         test_file: Annotated[str, typer.Option(help='')],
+        output_dir: Annotated[str, typer.Option(help='')],
 ):
     model, tokenizer = load_model_and_tokenizer(model_dir)
     print('Load model complete.')
@@ -75,8 +76,8 @@ def main(
         print('Prompt {} is done. {}'.format(i, response))
         pred_list.append(response)
     print(len(pred_list))
-    write_to_txt(pred_list, './predictions/pred.txt')
-    write_to_txt(summary_list, './predictions/target.txt')
+    write_to_txt(pred_list, output_dir + '/pred.txt')
+    write_to_txt(summary_list, output_dir + '/target.txt')
     print('Inference done.')
 
 
