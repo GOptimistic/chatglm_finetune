@@ -55,6 +55,8 @@ if __name__ == "__main__":
         for line in target:
             line = process_token(line.strip())
             target_results.append(line)
+    print(len(pred_results))
+    print(len(target_results))
     with open(config.pred_output, 'w', encoding='utf-8') as f:
         f.write('\n'.join(pred_results))
     with open(config.target_output, 'w', encoding='utf-8') as f:
